@@ -9,7 +9,7 @@
 .title {
     display: inline;
     font-family: "Rubik Glitch", system-ui;
-    font-size: clamp(1.5rem, 5vw, 5rem);
+    font-size: clamp(1.5rem, 8vw, 10rem);
     color: #fff;
     position: relative;
     justify-self: center;
