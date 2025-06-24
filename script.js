@@ -2,8 +2,14 @@ let currentLocation;
 let currentWeather;
 let myLatitude;
 let myLongitude;
+const searchBtn = document.getElementById("find-weather-btn");
+const usersCity = document.getElementById("location");
+const weatherDescription = document.getElementById("weather-text");
+const weatherTemp = document.getElementById("temp");
+const body = document.querySelector("body");
+const weatherCardContainer = document.getElementById("weather-card-container");
 
-async function fetchData() {
+async function getLocation() {
     await fetch(`https://api.weather.gov/points/${myLatitude},${myLongitude}`)
     .then(response => response.json())
     .then(data => {
@@ -12,10 +18,9 @@ async function fetchData() {
     })
 }
 
-
 function displayData() {
-    fetchData()
-    console.log(currentLocation.properties.gridX, currentLocation.properties.gridY)
+    console.log(currentLocation)
+    usersCity.innerText = currentLocation.properties.relativeLocation.properties.city
 }
 
 
@@ -31,6 +36,28 @@ const displayForecast = () => {
     // debugger
     console.log(currentWeather)
     currentWeather.properties.periods.forEach(time => {
+        if (time.isDaytime) {
+            const weatherCard = document.createElement("div");
+            weatherCardContainer.classList.add("d-flex");
+            weatherCard.classList.add("weather-card");
+            weatherCard.classList.add("d-flex")
+            weatherCard.classList.add("flex-column")
+            const weatherName = document.createElement("h4");
+            weatherName.classList.add("d-inline");
+            weatherName.innerText = time.name;
+            const weatherTemp = document.createElement("h3");
+            weatherTemp.classList.add("d-inline");
+            weatherTemp.innerText = time.temperature + "°F";
+            const weatherDescription = document.createElement("p");
+            weatherDescription.classList.add("d-inline");
+            weatherDescription.classList.add("weather-text");
+            weatherDescription.innerText = time.shortForecast;
+            weatherCardContainer.appendChild(weatherCard);
+            weatherCard.appendChild(weatherName);
+            weatherCard.appendChild(weatherTemp);
+            weatherCard.appendChild(weatherDescription);
+        }
+
         console.log(time.name, time.probabilityOfPrecipitation)
     })
 }
@@ -52,11 +79,15 @@ const findMe = async () => {
     };
     
     navigator.geolocation.getCurrentPosition(success, error);
-    displayData()
-    findForecast()
-    displayForecast()
-//   console.log(navigator.geolocation.getCurrentPosition(success))
+    //   console.log(navigator.geolocation.getCurrentPosition(success))
 }
 
-
 findMe()
+
+searchBtn.addEventListener("click", async () => {
+    await getLocation()
+    displayData()
+    await findForecast()
+    displayForecast()
+});
+

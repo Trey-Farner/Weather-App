@@ -1,0 +1,8 @@
+.weather-card {
+    width: 175px;
+}
+
+.weather-container {
+    overflow-x: scroll;
+    gap: 1rem;
+}

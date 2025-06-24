@@ -8,7 +8,24 @@
     <title>Weather App</title>
 </head>
 <body>
-    
+    <main class="container">
+        <div class="row-fluid">
+            <div class="col-md-12">
+                <h1>Weather App</h1>
+                <p>Press the button to find your current weather.</p>
+            </div>
+            <button id="find-weather-btn">What's the Weather?</button>
+            <div id="weather-info" class="col-md-12">
+                <h2 id="location">Your City</h2>
+                <h3 id="temp"></h3>
+                <p id="weather-text">Weather information will be displayed here.</p>
+            </div>
+        </div>
+        <div class="row-fluid flex-row d-flex weather-container" id="weather-card-container">
+            <!-- Weather cards will be dynamically inserted here -->
+
+        </div>
+    </main>
 
     <script src="./script.js"></script>
 </body>
