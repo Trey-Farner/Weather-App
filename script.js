@@ -4,7 +4,7 @@ let myLatitude;
 let myLongitude;
 const searchBtn = document.getElementById("find-weather-btn");
 const usersCity = document.getElementById("location");
-const weatherDescription = document.getElementById("weather-text");
+const weatherText = document.getElementById("weather-text");
 const weatherTemp = document.getElementById("temp");
 const body = document.querySelector("body");
 const weatherCardContainer = document.getElementById("weather-card-container");
@@ -52,9 +52,14 @@ const displayForecast = () => {
             weatherDescription.classList.add("d-inline");
             weatherDescription.classList.add("weather-text");
             weatherDescription.innerText = time.shortForecast;
+            const weatherPrecipitation = document.createElement("p");
+            weatherPrecipitation.classList.add("d-inline");
+            weatherPrecipitation.innerText = time.probabilityOfPrecipitation.value + "%";
+            weatherText.style.display = "block"
             weatherCardContainer.appendChild(weatherCard);
             weatherCard.appendChild(weatherName);
             weatherCard.appendChild(weatherTemp);
+            weatherCard.appendChild(weatherPrecipitation);
             weatherCard.appendChild(weatherDescription);
         }
 
@@ -89,5 +94,6 @@ searchBtn.addEventListener("click", async () => {
     displayData()
     await findForecast()
     displayForecast()
+    searchBtn.style.display = "none";
 });
 

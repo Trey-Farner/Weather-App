@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik+Glitch&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./bootstrap.css">
     <link rel="stylesheet" href="./style.css">
     <title>Weather App</title>
@@ -10,20 +13,22 @@
 <body>
     <main class="container">
         <div class="row-fluid">
-            <div class="col-md-12">
-                <h1>Weather App</h1>
+            <div class="col-md-12 justify-content-center">
+                <h1 class="text-center mt-2 title">Weather App</h1>
                 <p>Press the button to find your current weather.</p>
+                <button id="find-weather-btn">What's the Weather?</button>
             </div>
-            <button id="find-weather-btn">What's the Weather?</button>
             <div id="weather-info" class="col-md-12">
-                <h2 id="location">Your City</h2>
                 <h3 id="temp"></h3>
-                <p id="weather-text">Weather information will be displayed here.</p>
             </div>
         </div>
-        <div class="row-fluid flex-row d-flex weather-container" id="weather-card-container">
-            <!-- Weather cards will be dynamically inserted here -->
-
+        <div class="weather-container">
+            <h2 id="location" class="text-center"></h2>
+            <p id="weather-text" class="text-center weather-text">This weeks weather</p>
+            <div class="row-fluid flex-row d-flex card-container" id="weather-card-container">
+                <!-- Weather cards will be dynamically inserted here -->
+    
+            </div>
         </div>
     </main>
 

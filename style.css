@@ -1,8 +1,47 @@
 .weather-card {
-    width: 175px;
+    min-width: 205px;
+    border: solid .25rem #8F2D56;
+    border-radius: 5px;
+    background-color: #0496FF;
+    padding: 1rem;
+}
+
+.title {
+    display: inline;
+    font-family: "Rubik Glitch", system-ui;
+    font-size: clamp(1.5rem, 5vw, 5rem);
+    color: #fff;
+    position: relative;
+    justify-self: center;
+
+    &::after {
+        content: "Weather App";
+        text-align: center;
+        position: absolute;
+        left: -3px;
+        color: darkblue;
+        z-index: -1;
+    }
+}
+
+.card-container {
+    overflow-x: scroll;
+    gap: 1rem;
+    padding: .5rem;
+}
+
+.weather-text {
+    display: none;
 }
 
 .weather-container {
-    overflow-x: scroll;
-    gap: 1rem;
+    border: solid .25rem #8F2D56;
+    border-radius: 5px;
+    background-color: #FFBC42;
+    padding: 1.5rem;
+    
+}
+
+body {
+    background-color: #D84A05;
 }
