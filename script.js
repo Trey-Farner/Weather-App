@@ -8,6 +8,20 @@ const weatherText = document.getElementById("weather-text");
 const weatherTemp = document.getElementById("temp");
 const body = document.querySelector("body");
 const weatherCardContainer = document.getElementById("weather-card-container");
+const weatherCardWrapper = document.getElementById("weather-card-wrapper")
+const imageArr = ["./Images/Blue Square.png", "./Images/Heart.png", "./Images/Octagon.png", "./Images/Oval.png", "./Images/Purple Triangle.png", "./Images/Rhombus.png", "./Images/Star.png", ]
+
+
+imageArr.forEach(item => {
+    const backgroundImg = document.createElement("img")
+    backgroundImg.style.width = `${Math.floor(Math.random() * 100) + 200}px`
+    backgroundImg.style.position = "absolute"
+    backgroundImg.style.top = `${Math.floor(Math.random() * 100) - 20}%`
+    backgroundImg.style.left = `${Math.floor(Math.random() * 80) + 1}%`
+    backgroundImg.style.zIndex = -1
+    backgroundImg.src = item
+    body.appendChild(backgroundImg)
+})
 
 async function getLocation() {
     await fetch(`https://api.weather.gov/points/${myLatitude},${myLongitude}`)
@@ -95,5 +109,6 @@ searchBtn.addEventListener("click", async () => {
     await findForecast()
     displayForecast()
     searchBtn.style.display = "none";
+    weatherCardWrapper.style.display = "block"
 });
 
