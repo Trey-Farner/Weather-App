@@ -48,4 +48,5 @@
 body {
     scrollbar-color: #d32b2b;
     background-color: #D84A05;
+    overflow: hidden;
 }
